@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        安全说明：
+        1. 不声明任何权限（无 INTERNET / 存储权限），全部数据留在应用私有目录；
+        2. allowBackup=false：禁止 adb backup 与云端自动备份带走里程碑数据，
+           换机统一走应用内的「导出/导入」功能（见 docs/07）；
+        3. 仅 MainActivity 导出，且为 LAUNCHER 入口所必需，不解析外部 Intent 参数。
+    -->
+    <application
+        android:name=".EndFieldApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EndFieldTime"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EndFieldTime">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
