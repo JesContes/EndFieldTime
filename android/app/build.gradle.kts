@@ -15,8 +15,8 @@ val keystoreProps = Properties().apply {
 }
 
 // 版本单一来源：versionCode 每次发版递增；产物名 = endFieldTime-<versionName>.apk
-val appVersionCode = 2
-val appVersionName = "1.1"
+val appVersionCode = 3
+val appVersionName = "1.1.1"
 
 android {
     namespace = "com.endfield.time"
