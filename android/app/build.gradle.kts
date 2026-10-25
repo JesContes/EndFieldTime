@@ -14,9 +14,23 @@ val keystoreProps = Properties().apply {
     }
 }
 
-// 版本单一来源：versionCode 每次发版递增；产物名 = endFieldTime-<versionName>.apk
-val appVersionCode = 3
-val appVersionName = "1.1.1"
+// ============================================================================
+// 版本规则（全项目唯一来源：发版只改下面这一行版本名）
+//
+//   版本号固定两段：<主版本>.<次版本>，例如 1.2
+//   - 小版本迭代（加功能、修 bug）：次版本 +1，如 1.2 → 1.3
+//   - 大版本（重构 / 不兼容变更）：主版本 +1 且次版本归零，如 1.9 → 2.0
+//
+//   versionCode 由版本名自动推导 = 主*100 + 次（1.2 → 102），
+//   保证每次发版严格递增，不需要手工维护，也不会忘记递增导致装不上。
+// ============================================================================
+val appVersionName = "1.2"
+val appVersionCode: Int = appVersionName.split(".").let { parts ->
+    require(parts.size == 2 && parts.all { it.toIntOrNull() != null }) {
+        "版本名必须是 <主>.<次> 两段数字，当前为：$appVersionName"
+    }
+    parts[0].toInt() * 100 + parts[1].toInt()
+}
 
 android {
     namespace = "com.endfield.time"
