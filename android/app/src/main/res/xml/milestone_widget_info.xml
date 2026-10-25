@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    尺寸声明说明：
+    - 以 minWidth/minHeight 为准（所有启动器通用）：250dp×110dp ≈ 4×2 格
+    - 不写 targetCellWidth/Height：部分国内 ROM 会误读该字段导致添加时铺满整屏
+    - minResize* 允许用户缩小，避免"一放上去就占满"
+-->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:configure="com.endfield.time.widget.WidgetConfigActivity"
     android:description="@string/widget_description"
     android:initialLayout="@layout/widget_milestone"
     android:minHeight="110dp"
+    android:minResizeHeight="70dp"
+    android:minResizeWidth="180dp"
     android:minWidth="250dp"
     android:previewLayout="@layout/widget_milestone"
     android:resizeMode="horizontal|vertical"
-    android:targetCellHeight="2"
-    android:targetCellWidth="4"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen" />
