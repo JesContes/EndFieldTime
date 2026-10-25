@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""终末时记 · 界面原型图生成脚本(半平面风,主色 #66CCFF)"""
+"""时记 · 界面原型图生成脚本(半平面风,主色 #66CCFF)"""
 import datetime
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
@@ -129,7 +129,7 @@ def filter_bar(d, current, total):
     d.text((748, cy), "共 %d 条记录" % total, font=F(24), fill=INK2, anchor="rm")
 
 def home_header(d, subtitle="记录每一个重要时刻"):
-    d.text((32, 96), "终末时记", font=F(54, True), fill=INK)
+    d.text((32, 96), "时记", font=F(54, True), fill=INK)
     d.text((34, 164), subtitle, font=F(25), fill=INK2)
     clock_icon(d, 692, 122)
 

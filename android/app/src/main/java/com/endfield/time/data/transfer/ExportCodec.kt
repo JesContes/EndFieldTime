@@ -17,7 +17,7 @@ data class ImportPreview(
 class ExportFormatException(message: String) : Exception(message)
 
 /**
- * 「终末时记」导出格式 v1 编解码。
+ * 「时记」导出格式 v1 编解码。
  *
  * 设计要点（详见 docs/07-数据导入导出设计.md）：
  * - 紧凑键（c/k/d/h/a/t/s）替代全字段名，省约 20% 体积；
@@ -87,7 +87,7 @@ object ExportCodec {
         }
 
         if (root.optString("format") != FORMAT_ID) {
-            throw ExportFormatException("这不是「终末时记」的导出文件")
+            throw ExportFormatException("这不是「时记」的导出文件")
         }
         val version = root.optInt("version", 0)
         if (version > VERSION) {

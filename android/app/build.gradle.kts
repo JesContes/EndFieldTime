@@ -14,6 +14,10 @@ val keystoreProps = Properties().apply {
     }
 }
 
+// 版本单一来源：versionCode 每次发版递增；产物名 = endFieldTime-<versionName>.apk
+val appVersionCode = 2
+val appVersionName = "1.1"
+
 android {
     namespace = "com.endfield.time"
     compileSdk = 36
@@ -23,8 +27,8 @@ android {
         minSdk = 26
         targetSdk = 36
         // 每次发版必须递增，否则无法覆盖升级
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = appVersionCode
+        versionName = appVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -56,7 +60,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
     buildFeatures {
         compose = true
     }
@@ -95,4 +98,15 @@ dependencies {
     testImplementation(libs.org.json)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+// 产物命名：release 输出 endFieldTime-<versionName>.apk（便于直接分发与识别）
+androidComponents {
+    onVariants { variant ->
+        if (variant.buildType == "release") {
+            variant.outputs.forEach { output ->
+                output.outputFileName.set("endFieldTime-$appVersionName.apk")
+            }
+        }
+    }
 }

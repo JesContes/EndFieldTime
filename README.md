@@ -1,8 +1,8 @@
-# 终末时记（EndField Time）
+# 时记（EndField Time）
 
 > 记录每一个重要时刻 —— Android 里程碑时间记录应用 · 设计文档包
 
-「终末时记」是一款**纯本地**的 Android 应用：以彩色卡片记录里程碑（分类、内容、目标日期、可选内容详情），实时展示该日期距今天的天数（已过 N 天 / 还有 N 天）。半平面风设计，主色 `#66CCFF`，无需登录，数据仅存储在本机。
+「时记」是一款**纯本地**的 Android 应用：以彩色卡片记录里程碑（分类、内容、目标日期、可选内容详情），实时展示该日期距今天的天数（已过 N 天 / 还有 N 天）。半平面风设计，主色 `#66CCFF`，无需登录，数据仅存储在本机。
 
 ![主界面原型](docs/images/proto-01-home.png)
 
@@ -30,7 +30,7 @@
 ![实机首页](docs/images/app-01-home.png)
 
 - 构建：`AGP 9.4.1 + Gradle 9.8.2 + 内置 Kotlin + KSP(Room) + compileSdk 36 / minSdk 26`
-- 产物：`android/app/build/outputs/apk/debug/app-debug.apk`（约 12.8 MB，包名 `com.endfield.time`）
+- 产物：`android/app/build/outputs/apk/release/endFieldTime-<versionName>.apk`（release 8.7 MB / debug 12.9 MB，包名 `com.endfield.time`）
 - 已实测：新增（含分类下拉搜索）→ 列表 → 单击进详情 → 编辑回填保存 → 内容详情弹层 → 长按删除 → 确认删除
 - 构建与联调细节、两个真实缺陷的修复记录见 [06 · 开发与构建说明](docs/06-开发与构建说明.md)
 

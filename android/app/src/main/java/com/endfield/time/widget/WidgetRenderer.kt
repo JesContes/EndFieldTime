@@ -28,7 +28,7 @@ object WidgetRenderer {
             views.setTextViewText(R.id.widget_content, milestone.content)
             views.setTextViewText(R.id.widget_date, "目标日期 ${milestone.targetDateText}")
         } else {
-            views.setTextViewText(R.id.widget_category, "终末时记")
+            views.setTextViewText(R.id.widget_category, "时记")
             views.setTextViewText(R.id.widget_day_label, "")
             views.setTextViewText(R.id.widget_day_count, "—")
             views.setTextViewText(R.id.widget_content, "点按选择里程碑")

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""桌面上「终末时记」小组件效果示意（不是真机截图，是设计稿）"""
+"""桌面上「时记」小组件效果示意（不是真机截图，是设计稿）"""
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 FONT = "C:/Windows/Fonts/msyh.ttc"

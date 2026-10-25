@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""终末时记 · 功能流程图 + 时序图生成脚本"""
+"""时记 · 功能流程图 + 时序图生成脚本"""
 import math
 from PIL import Image, ImageDraw, ImageFont
 
@@ -80,7 +80,7 @@ def flowchart():
     W, H = 2500, 2360
     img = Image.new("RGBA", (W, H), "#FFFFFF")
     d = ImageDraw.Draw(img)
-    d.text((80, 66), "终末时记 · 功能流程图", font=F(48, True), fill=INK)
+    d.text((80, 66), "时记 · 功能流程图", font=F(48, True), fill=INK)
     d.text((80, 136), "启动加载 → 渲染列表 → 用户操作(分类过滤 / 新增 / 查看详情 / 长按删除)→ 数据驱动自动刷新",
            font=F(26), fill=INK2)
 

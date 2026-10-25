@@ -136,7 +136,7 @@ private fun WidgetConfigScreen(onPick: (Long) -> Unit, onCancel: () -> Unit) {
                     )
                     onCancel()
                 }) {
-                    Text("打开终末时记", fontWeight = FontWeight.Bold)
+                    Text("打开时记", fontWeight = FontWeight.Bold)
                 }
             }
         } else {

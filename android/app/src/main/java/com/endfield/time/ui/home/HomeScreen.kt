@@ -316,11 +316,11 @@ fun HomeScreen(
     }
 }
 
-/** 导出文件名：终末时记-yyyyMMdd-HHmm.json[.gz] */
+/** 导出文件名：时记-yyyyMMdd-HHmm.json[.gz] */
 private fun exportFileName(gzip: Boolean): String {
     val stamp = java.time.LocalDateTime.now()
         .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd-HHmm"))
-    return if (gzip) "终末时记-$stamp.json.gz" else "终末时记-$stamp.json"
+    return if (gzip) "时记-$stamp.json.gz" else "时记-$stamp.json"
 }
 
 @Composable
@@ -333,7 +333,7 @@ private fun HomeHeader(trailing: @Composable () -> Unit = {}) {
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = "终末时记",
+                text = "时记",
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = InkPrimary
