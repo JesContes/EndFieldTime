@@ -8,8 +8,13 @@ import kotlinx.coroutines.flow.Flow
 /**
  * 唯一数据源抽象：UI 只经由 ViewModel -> Repository -> DAO。
  * 后续若增加云同步，只需在此扩展 RemoteDataSource。
+ *
+ * @param onDataChanged 任何写操作成功后的回调（用于刷新桌面小组件）
  */
-class MilestoneRepository(private val dao: MilestoneDao) {
+class MilestoneRepository(
+    private val dao: MilestoneDao,
+    private val onDataChanged: () -> Unit = {}
+) {
 
     fun observe(category: String): Flow<List<MilestoneEntity>> =
         if (category == ALL_CATEGORY) dao.observeAll() else dao.observeByCategory(category)
@@ -20,20 +25,24 @@ class MilestoneRepository(private val dao: MilestoneDao) {
 
     suspend fun getById(id: Long): MilestoneEntity? = dao.getById(id)
 
-    suspend fun insert(entity: MilestoneEntity): Long = dao.insert(entity)
+    suspend fun insert(entity: MilestoneEntity): Long = dao.insert(entity).also { notifyChanged() }
 
-    suspend fun update(entity: MilestoneEntity): Int = dao.update(entity)
+    suspend fun update(entity: MilestoneEntity): Int = dao.update(entity).also { notifyChanged() }
 
-    suspend fun deleteById(id: Long): Int = dao.deleteById(id)
+    suspend fun deleteById(id: Long): Int = dao.deleteById(id).also { notifyChanged() }
 
     suspend fun getAll(): List<MilestoneEntity> = dao.getAll()
 
     suspend fun insertAll(entities: List<MilestoneEntity>): Int {
         if (entities.isEmpty()) return 0
-        return dao.insertAll(entities).size
+        return dao.insertAll(entities).size.also { notifyChanged() }
     }
 
-    suspend fun deleteAll(): Int = dao.deleteAll()
+    suspend fun deleteAll(): Int = dao.deleteAll().also { notifyChanged() }
+
+    private fun notifyChanged() {
+        runCatching { onDataChanged() }
+    }
 
     /** 导入去重键：内容 + 分类 + 目标日期 */
     fun identityKey(content: String, category: String, targetDate: Long): String =

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">终末时记</string>
+    <string name="widget_label">终末时记 · 里程碑</string>
+    <string name="widget_description">在桌面显示某个里程碑已过或还有多少天</string>
 </resources>

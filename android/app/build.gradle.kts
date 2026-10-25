@@ -23,8 +23,8 @@ android {
         minSdk = 26
         targetSdk = 36
         // 每次发版必须递增，否则无法覆盖升级
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
